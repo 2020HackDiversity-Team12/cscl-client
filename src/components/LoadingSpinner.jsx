@@ -6,11 +6,12 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 function LoadingSpinner({ type, color, size }) {
   const { promiseInProgress } = usePromiseTracker();
   return (
-    promiseInProgress && (
-      <div className="uk-text-center">
-        <Loader type={type} color={color} height={size} width={size} />
-      </div>
-    )
+    // promiseInProgress && (
+    //   <div className="uk-text-center">
+    //     <Loader type={type} color={color} height={size} width={size} />
+    //   </div>
+    // )
+    <Loader type={type} color={color} height={size} width={size} />
   );
 }
 
