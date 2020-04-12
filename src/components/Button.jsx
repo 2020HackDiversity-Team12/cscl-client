@@ -7,7 +7,11 @@ function Button(props) {
   if (size == "small") auxClass = "uk-button-small";
   else if (size == "large") auxClass = "uk-button-large";
   const cls = auxClass ? `${baseClass} ${auxClass}` : baseClass;
-  return <button className={cls}>{props.children}</button>;
+  return (
+    <button className={cls} {...props}>
+      {props.children}
+    </button>
+  );
 }
 
 Button.defaultProps = {

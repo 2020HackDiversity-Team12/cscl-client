@@ -1,11 +1,7 @@
 import React from "react";
-
 import LoadingSpinner from "../components/LoadingSpinner";
 import Logo from "../components/Logo";
-import Navbar from "../components/Navbar";
-import ButtonMore from "../components/ButtonMore";
 import Button from "../components/Button";
-import BookItem from "../components/BookItem";
 
 export default function () {
   return (
