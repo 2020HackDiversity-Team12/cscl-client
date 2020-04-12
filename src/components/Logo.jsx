@@ -12,7 +12,9 @@ function Logo({ size }) {
 function getSize(size) {
   switch (size) {
     case "sm":
-      return "35px";
+      return "25px";
+    case "md":
+      return "45px";
     case "lg":
       return "80px";
     case "xlg":
@@ -21,7 +23,7 @@ function getSize(size) {
 }
 
 Logo.defaultProps = {
-  size: "lg",
+  size: "md",
 };
 
 const styles = {

@@ -39,7 +39,7 @@ export default function () {
       <div className="uk-margin">
         <pre>
           <div>Component: {"<Button>Text</Button"}</div>
-          <div>Props: size=(small|large), disabled=(boolean), onPress=(Fn)</div>
+          <div>Props: size=(small|large), disabled=(boolean), onClick=(Fn)</div>
         </pre>
         <Button>text</Button>
       </div>
@@ -47,7 +47,7 @@ export default function () {
       <div className="uk-margin">
         <pre>
           <div>Component: {"<ButtonMore />"}</div>
-          <div>Props: onPress=(Fn)</div>
+          <div>Props: onClick=(Fn)</div>
         </pre>
         <ButtonMore />
       </div>

@@ -5,7 +5,7 @@ import './App.css';
 function App(props) {
   return (
     <React.Fragment>
-      <div>
+      <div className="uk-dark">
         {props.children}
       </div>
     </React.Fragment >
