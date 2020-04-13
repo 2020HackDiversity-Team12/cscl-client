@@ -2,7 +2,6 @@ import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { trackPromise } from "react-promise-tracker";
 import AuthService from "../services/AuthService";
-import Button from "../components/Button";
 import LoginForm from "../forms/LoginForm";
 
 class AdminLoginPage extends React.Component {
