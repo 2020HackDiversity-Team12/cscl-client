@@ -48,7 +48,7 @@ class AddBookForm extends React.Component {
             <div>
               <Input
                 name="Title"
-                placeholder="Harry Potter 3"
+                placeholder="Harry Potter"
                 onChange={(value) => this.handleChange("title", value)}
               />
             </div>
@@ -99,15 +99,17 @@ class AddBookForm extends React.Component {
           </div>
         </div>
         <div class="uk-margin-small uk-width-1-1@s uk-text-align uk-flex uk-flex-center">
-          <Button
-            className="uk-button uk-button-default"
-            onClick={(e) => {
-              e.preventDefault();
-              this.props.onSubmit(this.state);
-            }}
-          >
-            Add
-          </Button>
+          <div className="uk-margin-large-top">
+            <button
+              className="uk-button uk-background-secondary"
+              onClick={(e) => {
+                e.preventDefault();
+                this.props.onSubmit(this.state);
+              }}
+            >
+              <span style={{ color: "#fff" }}>Add</span>
+            </button>
+          </div>
         </div>
       </form>
     );

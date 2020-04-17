@@ -2,14 +2,15 @@ import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import AuthService from "../services/AuthService";
 
-export default function PrivateRoute({ path, component: Component, ...rest }) {
+export default function PrivateRoute(props) {
+  const { path, component: Component } = props;
   return (
     <Route
-      {...rest}
+      {...props}
       path={path}
       render={(props) => {
         //  not logged in so redirect to login page
-        if (!AuthService.isLoggedIn) return <Redirect to="/login" />;
+        if (!AuthService.isLoggedIn) return <Redirect to="/auth" />;
 
         // authorised so return component
         return <Component />;

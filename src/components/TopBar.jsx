@@ -23,9 +23,7 @@ export default function (props) {
                 uk-icon="icon:plus;ratio:0.6"
                 style={{ color: "#000" }}
               ></span>
-              <Link uk-toggle="target:#modal-center" to="/auth">
-                Add
-              </Link>
+              <Link to="/admin/add">Add</Link>
             </div>
             <div className="uk-navbar-item topbar-item">
               <span

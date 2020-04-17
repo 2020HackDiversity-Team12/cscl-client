@@ -4,21 +4,21 @@ import { Link } from "react-router-dom";
 function ButtonMore(props) {
   return (
     <React.Fragment>
-      <span
-        style={styles.button}
-        uk-icon="icon:chevron-down;ratio:1.6"
-        className="uk-box-shadow-small"
-        onClick={props.onMore}
-      ></span>
-      &nbsp;
-      {props.children}
+      {!props.hidden && (
+        <span
+          style={styles.button}
+          uk-icon="icon:chevron-down;ratio:1.25"
+          className="uk-box-shadow-small"
+          onClick={props.onMore}
+        ></span>
+      )}
     </React.Fragment>
   );
 }
 
 const styles = {
   button: {
-    border: "1.5px solid #757575",
+    border: "1.3px solid #757575",
     borderRadius: "80px",
     cursor: "pointer",
     padding: "5px",

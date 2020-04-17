@@ -2,27 +2,26 @@ import React from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import ButtonMore from "../components/ButtonMore";
 import Navbar from "../components/Navbar";
-import BookItemList from "../components/BookItemList";
 import BookService from "../services/BookService";
-import BookItem from "../components/BookItem";
 import { trackPromise } from "react-promise-tracker";
-import Logo from "../components/Logo";
 import Table from "../components/Table";
-import AddBookForm from "../forms/AddBookForm";
-import { useAlert } from "react-alert";
 
 class AdminPage extends React.Component {
   state = {
     books: [],
-    currentBook: {},
+    next: null,
+    ajaxCall: true,
   };
 
   componentDidMount() {
     trackPromise(
       BookService.browse()
         .then((resp) => {
+          console.log(resp.data);
           this.setState({
-            books: resp.data,
+            books: resp.data.books,
+            next: resp.data.next,
+            ajaxCall: false,
           });
         })
         .catch((error) => {
@@ -31,27 +30,20 @@ class AdminPage extends React.Component {
     );
   }
 
-  handleClickItem = (book) => {
-    this.setState({
-      currentBook: book,
-    });
-  };
-
-  handleNewBook = (book) => {
+  handleMore = () => {
+    this.setState({ ajaxCall: true });
     trackPromise(
-      BookService.add(book)
+      BookService.browse(this.state.next)
         .then((resp) => {
           console.log(resp.data);
-          if (resp.data !== "Invalid Entry") {
-            alert("successfully added");
-            this.setState({
-              books: [book, ...this.state.books],
-            });
-          }
+          this.setState({
+            books: [...this.state.books, ...resp.data.books],
+            next: resp.data.next,
+            ajaxCall: false,
+          });
         })
         .catch((error) => {
           alert("unexpected error occured");
-          this.setState({ ajaxCall: false });
         })
     );
   };
@@ -79,38 +71,20 @@ class AdminPage extends React.Component {
     );
   };
 
-  renderModal() {
-    return (
-      <div
-        id="modal-center"
-        class="uk-flex-top uk-margin-large"
-        uk-modal="true"
-      >
-        <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
-          <button
-            class="uk-modal-close-default"
-            type="button"
-            uk-close="true"
-          ></button>
-          <AddBookForm onSubmit={this.handleNewBook} />
-        </div>
-      </div>
-    );
-  }
-
   render() {
     return (
       <div>
         <Navbar searchBar={false} />
-        <div
-          className="uk-container uk-margin-medium
-        "
-        >
+        <div className="uk-container uk-margin-medium">
           <Table books={this.state.books} onDelete={this.handleDelete} />
         </div>
-        {this.renderModal()}
+
         <div className="uk-margin">
           <LoadingSpinner />
+        </div>
+
+        <div class="uk-flex uk-flex-center uk-flex-middle uk-margin-medium">
+          <ButtonMore onMore={this.handleMore} hidden={this.state.ajaxCall} />
         </div>
       </div>
     );

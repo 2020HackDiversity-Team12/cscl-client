@@ -12,6 +12,7 @@ class BookItemsPage extends React.Component {
   state = {
     books: [],
     next: null,
+    ajaxCall: true,
   };
 
   componentDidMount() {
@@ -22,6 +23,7 @@ class BookItemsPage extends React.Component {
           this.setState({
             books: resp.data.books,
             next: resp.data.next,
+            ajaxCall: false,
           });
         })
         .catch((error) => {
@@ -31,6 +33,7 @@ class BookItemsPage extends React.Component {
   }
 
   handleMore = () => {
+    this.setState({ ajaxCall: true });
     trackPromise(
       BookService.browse(this.state.next)
         .then((resp) => {
@@ -38,6 +41,7 @@ class BookItemsPage extends React.Component {
           this.setState({
             books: [...this.state.books, ...resp.data.books],
             next: resp.data.next,
+            ajaxCall: false,
           });
         })
         .catch((error) => {
@@ -69,7 +73,7 @@ class BookItemsPage extends React.Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <Navbar onSubmit={this.handleSubmit} />
         <div className="uk-container uk-text-center uk-margin-large">
           <BookItemList
             books={this.state.books}
