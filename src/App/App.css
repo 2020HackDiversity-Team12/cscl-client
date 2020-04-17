@@ -1,0 +1,36 @@
+html {
+  background-color: #fffde7 !important;
+}
+.topbar {
+  background-color: #f1f1f1 !important;
+}
+
+.topbar-item {
+  min-height: 30px !important;
+  color: #000 !important;
+}
+
+.uk-background-secondary {
+  background-color: #202020 !important;
+}
+
+.uk-background-sec {
+  background-color: #181818 !important;
+}
+
+.uk-background-muted {
+  background-color: #212121 !important;
+}
+
+.uk-card {
+  background-color: rgba(255, 249, 196, 0.6) !important;
+  border: 1px solid #ddd;
+}
+
+.uk-close-large {
+  background-color: rgba(255, 249, 196, 0.5) !important;
+}
+
+.disabled {
+  color: "red" !important;
+}
